@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UserProfile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/profilestyle.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="image">
+                <% if(user.img == undefined){ %>
+                    <img src= "/assets/img/blank-profile.png" alt="profile" style="width:100%">
+               <% } else{%> 
+                <img src= <%=  "/uploads/" + user.img.filename %> alt="profile" style="width:100%">
+               <% } %>          
+            
+            </div>
+            <div class="work-skills">
+
+                <div class="skills">
+                    <p>SKILLS</p>
+                    <% user.skills.forEach(element => { %>
+                        <p><%= element %> </p>   
+
+                    <% }) %>
+
+                  
+                    </div>
+
+
+
+                    <hr>
+                <div class="projects">
+                    <p>PROJECTS</p>
+                    <p>Helpy - Website</p>
+                    <p>Todo List</p>
+                    <p>Blog Post</p>
+                </div>
+               
+                
+            </div>
+        </div>
+
+
+        <div class="right">
+            <div class="intro">
+                <h1><%= user.name %> </h1> 
+                <p class="location">location <i class="fas fa-map-marker-alt loc-icon"></i></p>
+                <p class="profession"><%= user.post %> </p>
+                <p class="rating">RATINGS</p>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </p>
+                
+                <div class="mail">
+                    <i class="fas fa-envelope fa-2x"></i>
+                    <p>Send mail</p>
+                </div>
+                
+            </div>
+            <hr >
+            <div class="contact-info">
+                <p>CONTACT INFORMATION</p>
+            </div>
+            <div class="about">
+                
+
+                <table>
+                    <tr>
+                        <td>
+                            <p>PHONE:</p>
+                        </td>
+                        <td>
+                            <p class="contact"><%= user.contact %> </p>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            <p>ADDRESS:</p>
+                        </td>
+                        <td>
+                            <p><%= user.address %> </p>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            <p>EMAIL:</p>
+                        </td>
+                        <td>
+                            <p class="email"><%= user.email %> </p>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            <p>WEBSITE:</p>
+                        </td>
+                        <td>
+                            <p class="site"><%= user.website %> </p>
+                        </td>
+                    </tr>
+                </table>
+
+
+
+
+                <hr>
+
+                <div class="basic">
+                    <p>BASIC INFORMATION</p>
+                    <table>
+                        <tr>
+                            <td>
+                                <p>Birthday:</p>
+                            </td>
+                            <td>
+                                <p><%= user.birthday %> </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Gender:
+                            </td>
+                            <td>
+                                <p><%= user.gender %> </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Profile</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/login.css" />
+    <!-- Font Awesome icons (free version)-->
+    <script
+      src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+
+    <div class="container" style="margin:70px ;">
+
+      <h1>Upload Profile</h1>
+
+        <%= typeof msg != "undefined" ? msg : "" %> 
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <input name="img" type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+            <button class="btn btn-dark" type="submit">submit</button>
+
+            <a style="margin-left: 20px;" href="/skills">Skip --></a>
+          </form>
+
+
+    </div>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,121 @@
+<%- include("partials/header") %>
+
+<body style="margin: 0; background-color: grey;">
+
+
+
+
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
+        style="background-color:#fff; margin-bottom: 50px;" id="mainNav">
+        <div class="container" style="background-color: #fff;">
+            <a class="navbar-brand js-scroll-trigger" href="/#page-top" style="color: black;">Helpy</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li class="nav-item"><a style="color: black;" class="nav-link js-scroll-trigger"
+                            href="/#page-top">Home</a></li>
+
+                    <li class="nav-item"><a style="color: black;" class="nav-link js-scroll-trigger"
+                            href="/#services">How to Use</a></li>
+
+                    <li class="nav-item"><a style="color: black;" class="nav-link js-scroll-trigger"
+                            href="/login">Login</a></li>
+
+                    <li class="nav-item"><a style="color: black;" class="nav-link js-scroll-trigger"
+                            href="/register">Register</a></li>
+                        <!-- Search form -->
+                        <form action="/people" method="POST">
+                            <div style="border: 1px #f24516;" class="active-pink-3 active-pink-4 sm-4 searchbar">
+                                <input class="form-control" type="text" placeholder="Search Skill" aria-label="Search"
+                                    name="query">
+
+                            </div>
+
+                        </form>
+
+                        <!-- Search form -->
+                    </li>
+                </ul>
+            </div>
+
+    </nav>
+
+
+
+    <div class="container-fluid" style="margin-top: 85px;">
+
+        <% for (i=0;i<col;i++){ %> 
+       
+        <div class="row">
+
+            <% results.forEach(e => { %>
+
+
+
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card-ppl">
+                    <% if(e.img == undefined){ %>
+                        <img src= "assets/img/blank-profile.png" alt="profile" style="width:100%">
+                   <% } else{%> 
+                    <img src= <%=  "uploads/" + e.img.filename %> alt="profile" style="width:100%">
+                   <% } %> 
+
+                    <h2 style="margin-top: 10px;"><%= e.name %>  </h2>
+                    <hr style="margin-top: 10px;margin-bottom: 3px;">
+                    <div class="skills" >
+                      
+                           <p style="text-align: center; margin: 3px;"><%= searched %> </p>
+                            <% for(i=0;i<3;i++){ %> 
+                                <% if(searched === e.skills[i]){ %> 
+                                    <% continue %> 
+                                <% }else{ %> 
+                                    <p style="text-align: center;margin: 3px;"><%= e.skills[i] %></p>
+                                <% } %> 
+                            
+                            <% } %> 
+
+                        </ul>
+                    </div>
+                    <p style="margin-top: 10px;"><i class="fas fa-phone-alt" style="margin-right: 10px;"></i><%= "+91"+e.contact %> </p>
+                    <a style="margin: 5px 10px;" href="#" class="a-ppl"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" style="margin: 5px 10px;" class="a-ppl"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="margin: 5px 10px;" class="a-ppl"><i class="fab fa-instagram"></i></a>
+                    <form method="GET" action=<%= "/users/" + e.username %> >
+                        <p style="margin-top: 10px;"></p><button type="submit" class="button-ppl">View Profile</button></p>
+                    </form>
+                    
+                </div>
+            </div>
+            <% }); %>
+        <% } %> 
+
+
+
+
+        </div>
+     
+
+
+
+
+    </div>
+
+
+
+
+
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

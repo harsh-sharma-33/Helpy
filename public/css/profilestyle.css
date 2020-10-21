@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    width: 100%;
+    align-items: center;
+    background-color: #e3dfc8;
+}
+
+.container{
+    display: flex;
+    margin: 5% 10%;
+}
+
+.left{
+    margin-right: 100px;
+}
+
+hr{
+    margin: 30px;
+    margin-top: 20px;
+    border: 3px solid #F4653E;
+    border-bottom: 0ch;
+    border-color: #F4653E;
+    width: 140px;
+    
+    
+}
+
+.image{
+    margin-bottom: 40px;
+    width: 250px;
+}
+
+img{
+    width: 100%;
+}
+h1{
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 7px;
+}
+.location{
+    font-family: 'Roboto', sans-serif;
+    float: right;
+    position: relative;
+    bottom: 40px;
+    right: 90px;
+    color: grey;
+}
+
+.loc-icon{
+    margin-left: 10px;
+}
+
+.profession{
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 35px;
+    color: #F4653E;
+}
+
+
+.rating,.contact-info > p,.basic>p,.skills>p:first-child,.projects>p:first-child {
+    margin-bottom: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-size: small;
+    color: grey;
+}
+
+
+.skills>p,.projects>p{
+    font-size: 1rem;
+    font-family: "Roboto",sans-serif;
+    margin: 2px;
+}
+
+.mail{
+    display: flex;
+    align-items: center;
+    
+}
+.mail > p{
+    margin-left: 10px;
+    font-family: "Roboto",sans-serif;
+    font-size: x-large;
+}
+.fa-star{
+    margin: 0 2px 30px 2px;
+    color: #F4653E;
+}
+td{
+    padding: 7px 35px;
+    font-family: "Roboto",sans-serif;
+    font-size: medium;
+}
+
+td>p>a{
+    text-decoration: none;
+}
+.contact,.email,.site{
+    color: #F4653E;
+}
+.contact-info{
+    margin: 30px 0;
+}
+
+
+.clickable{
+    cursor: pointer;
+}
+.clickable:hover{
+    color:#F4653E;
+}
+/* .name-post{
+    display: none !important;
+} */
+
+
+.input-contact{
+    display: none;
+}

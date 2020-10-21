@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UserProfile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/profilestyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="image">
+                <% if(user.img == undefined){ %>
+                <img src="/assets/img/blank-profile.png" alt="profile" style="width:100%">
+                <% } else{%>
+                <img src=<%=  "/uploads/" + user.img.filename %> alt="profile" style="width:100%">
+                <% } %>
+
+            </div>
+            <div class="work-skills">
+
+                <div class="skills">
+                    <p>SKILLS</p>
+                    <% user.skills.forEach(element => { %>
+                    <p><%= element %> </p>
+
+                    <% }) %>
+
+
+                </div>
+
+
+
+                <hr>
+                <div class="projects">
+                    <p>PROJECTS</p>
+                    <form action="/update/projects/<%= user.username %>"  method="POST" name="project" >
+                        <input type="text"> <button type="submit">ADD</button>
+                    
+                    </form>
+
+                    <!-- <p>Helpy - Website</p>
+                    <p>Todo List</p>
+                    <p>Blog Post</p> -->
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="right">
+            <div class="intro">
+                <i class="far fa-edit clickable" id="edit"></i>
+                <h1 id="name"><%= user.name %> </h1>
+                <p class="location">location <i class="fas fa-map-marker-alt loc-icon"></i></p>
+                <p class="profession"><%= user.post %></p>
+
+                <form action="/update/<%=user.username%>" method="POST" class="name-post" style="display: none;">
+                    <input type="text" title="name" name="name" value="<%= user.name %> " placeholder="Name">
+                    <br>
+                    <input type="text" title="post" name="post" value="<%= user.post %> " placeholder="Post">
+                    <button type="submit">Save</button>
+                </form>
+
+
+
+                <p class="rating">RATINGS</p>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                </p>
+
+                <div class="mail">
+                    <i class="fas fa-envelope fa-2x"></i>
+                    <p>Send mail</p>
+                </div>
+
+            </div>
+            <hr>
+            <div class="contact-info">
+                <p>CONTACT INFORMATION <i class="far fa-edit clickable" id="edit-contact"
+                        style="margin-left: 35px; color: #000;font-size: medium;"></i></p>
+            </div>
+            <div class="about">
+                <!-- !!!!   CONTACT INFO FORM STARTS HERE   !!!! -->
+
+
+
+                <form action="/update/contact/<%=user.username%>" method="POST" class="contact-form">
+
+                    <table>
+                        <tr>
+                            <td>
+                                <p>PHONE:</p>
+                            </td>
+                            <td>
+                                <p class="contact contact-edits"><%= user.contact %> </p>
+                                <input type="text" class="input-contact" name="contact" style="display: none;"
+                                    value="<%= user.contact %> ">
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <p>ADDRESS:</p>
+                            </td>
+                            <td>
+                                <% if (user.address == undefined){ %>
+                                <p class="contact-edits" style="color: grey; font-size: small;">--edit to add address--
+                                </p>
+                                <% }else{ %>
+                                <p class="site contact-edits"><%= user.address %></a></p>
+                                <% } %>
+                                <input type="text" class="input-contact" value="<%= user.address %> " name="address"
+                                    style="display: none;">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <p>EMAIL:</p>
+                            </td>
+                            <td>
+                                <p class="email contact-edits"><%= user.email %> </p>
+                                <input value="<%= user.email %> " type="text" class="input-contact" name="email"
+                                    style="display: none;">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <p>WEBSITE:</p>
+                            </td>
+                            <td>
+                                <% if (user.website == undefined){ %>
+                                <p class="contact-edits" style="color: grey; font-size: small;">--edit to add site--</p>
+                                <% }else{ %>
+                                <p class="site contact-edits"><a href="<%= user.website %>"><%= user.website %></a></p>
+                                <% } %>
+
+                                <input value="<%= user.website %> " type="text" class="input-contact" name="website"
+                                    style="display: none;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>LINKEDIN:</p>
+                            </td>
+                            <td>
+                                <% if (user.linkedin == undefined){ %>
+                                <p class="contact-edits" style="color: grey; font-size: small;">--edit to add linkedin
+                                    profile--</p>
+                                <% }else{ %>
+                                <p class="site contact-edits"><a href="<%= user.linkedin %>"><%= user.linkedin %></a>
+                                </p>
+                                <% } %>
+
+
+                                <input value="<%= user.linkedin %>" type="text" class="input-contact" name="linkedin"
+                                    style="display: none;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>TWITTER:</p>
+                            </td>
+                            <td>
+                                <% if (user.twitter == undefined){ %>
+                                <p class="contact-edits" style="color: grey; font-size: small;">--edit to add twitter
+                                    profile--</p>
+                                <% }else{ %>
+                                <p class="site contact-edits"><a href="<%= user.twitter %>"><%= user.twitter %></a></p>
+                                <% } %>
+
+                                <input value="<%= user.twitter %>" type="text" class="input-contact" name="twitter"
+                                    style="display: none;">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>INSTAGRAM:</p>
+                            </td>
+                            <td>
+                                <% if (user.instagram == undefined){ %>
+                                <p class="contact-edits" style="color: grey; font-size: small;">--edit to add instagram
+                                    profile--</p>
+                                <% }else{ %>
+                                <p class="site contact-edits"><a href="<%= user.instagram %>"><%= user.instagram %></a>
+                                </p>
+                                <% } %>
+
+
+                                <input value="<%= user.instagram %>" type="text" class="input-contact" name="instagram"
+                                    style="display: none;">
+
+
+                                <button type="submit" class="contact-save btn btn-dark"
+                                    style="display: none; margin-top: 15px;">SAVE</button>
+
+                            </td>
+                        </tr>
+
+                    </table>
+
+
+                </form>
+
+                <hr>
+
+                <div class="basic">
+                    <p>BASIC INFORMATION <i class="far fa-edit clickable" id="edit-basic"
+                            style="margin-left: 35px; color: #000;font-size: medium;"></i></p>
+
+                    <form action="/update/basic/<%=user.username%>" method="POST" class="basic-form">
+                        <table>
+                            <tr>
+                                <td>
+                                    <p>Birthday:</p>
+                                </td>
+                                <td>
+                                    <% if (user.birthday == undefined){ %>
+                                    <p class="basic-edits" style="color: grey; font-size: small;">--edit to add Birthday
+                                        --</p>
+                                    <% }else{ %>
+                                    <p class="site basic-edits"><%= user.birthday %></a></p>
+                                    <% } %>
+
+                                    <input value="<%= user.birthday %>" type="text" class="input-basic" name="birthday"
+                                        style="display: none;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Gender:
+                                </td>
+                                <td>
+                                    <% if (user.gender == undefined){ %>
+                                    <p class="basic-edits" style="color: grey; font-size: small;">--edit to add Gender--
+                                    </p>
+                                    <% }else{ %>
+                                    <p class="site basic-edits"><%= user.gender %></a></p>
+                                    <% } %>
+
+                                    <select name="gender" class="input-basic" style="display: none;">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Not Mention">No Mention</option>
+
+                                    </select>
+
+                                    <button type="submit" class="basic-save btn btn-dark"
+                                        style="display: none; margin-top: 15px;">SAVE</button>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/edit.js"></script>
+
+</body>
+
+</html>
